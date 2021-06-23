@@ -28,3 +28,4 @@ function LawOfBigNumber(n, m, k, inputs) {
 
 console.log(LawOfBigNumber(10, 20, 4, [10, 2, 3, 4, 1, 2, 8, 9, 9, 0]));
 
+// note: for 문 안에 +, - 이 있다면 for문을 없애고 * 으로 바꿀 수 있다. => for을 반복하는 것보다 수학적으로 계산해서 * 연산을 사용하여 한번만 루프를 실행하게 할 수 있다. 
