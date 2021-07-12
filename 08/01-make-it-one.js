@@ -1,6 +1,3 @@
-
-
-
 function MakeItOne(n) {
   const dp = [];
   dp[1] = 0;
