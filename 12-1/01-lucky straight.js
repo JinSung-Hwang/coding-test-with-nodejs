@@ -1,6 +1,7 @@
 const assert = require('assert');
 
 
+// note: 19분 10초 13분동안 인터넷 서칭.... ㅋㅋ
 function luckyStraight(number) {
   const numberSTR = '' + number;
   const numbers = numberSTR.split('');
