@@ -1,22 +1,17 @@
 
-// note: Depth First Search (깊이 우선 탐색)
-// note: 1. O(n)의 탐색 시간이 걸린다.
-// note: 2. Stack을 이용하여 DFS를 구현한다. 하지만 보통 재귀함수만을 이용하여 DFS를 구현한다.
-// note  3. 재귀 함수로 구현하면 조금 성능이 떨어져서 스택을 이용하여 구현해야 할 때도 있을 수도 있다. 
-// note: 4. BFS보다는 약간 느리다. 
 
-function DFS(graph, visitedIndex, isVisiteds) {
-  isVisiteds[visitedIndex] = true; // note: 방문한 인덱스를 방문 처리한다.
+// note: 재귀 함수는 컴퓨터 동작상 내부 메모리 스택 프레임에 저장이된다. 이를 이용하여 스택 자료 구조를 사용하지 않고 재귀함수를 이용하여 DFS를 구현할 수 있다. 
 
+function DFS(graph, isVisiteds, visitingIndex) {
+  if (isVisiteds[visitingIndex]) return ; // note: 방문했다면 넘어가기
 
-  graph[visitedIndex].forEach(adjacent => {
-    if (isVisiteds[adjacent]) return ;
+  console.log('visit', visitingIndex);
+  isVisiteds[visitingIndex] = true;
 
-    return DFS(graph, adjacent, isVisiteds);
+  graph[visitingIndex].forEach(adjacent => {
+    return DFS(graph, isVisiteds, adjacent);
   });
-  
 }
-
 
 const graph = [
   [],
@@ -28,11 +23,10 @@ const graph = [
   [7],
   [2, 6, 8],
   [1, 7],
-];
+]
 
-const isVisiteds = [...Array(8).fill(false, 0, 8)];
+const isVisiteds = Array(9).fill(false);
 
-const visitedIndex = 1;
+const startIndex = 1;
 
-
-DFS(graph, visitedIndex, isVisiteds);
+DFS(graph, isVisiteds, startIndex);
