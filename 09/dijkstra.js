@@ -8,14 +8,19 @@ function Dijkstra(startNode, adjacentMatrix) {
   for (let i = 0 ; i < adjacentMatrix.length ; i++) {
 
     let minIndex = null;
+    let minValue = Infinity;
     for (let j = 0; j < shortestPaths.length; j++) { // note: 최단 노드 선택
-      if      (isVisiteds[j]) continue;
-      else if (minIndex === null) minIndex = j;
-      else if (shortestPaths[j] < shortestPaths[minIndex]) minIndex = j;
+      if (!isVisiteds[j] && shortestPaths[j] < minValue) { // note: 방문하지 않고 가장 짧은 최단 거리의 노드를 구함
+        minIndex = j;
+        minValue = shortestPaths[j];
+      }
     }
+
     isVisiteds[minIndex] = true; // note: 방문 처리
     let visitIndex = minIndex;
     for (let l = 0 ; l < shortestPaths.length ; l++) { // note: 최단 거리 갱신
+      if (isVisiteds[l]) continue; // note: 이미 방문했다면 갱신하지 않는다
+
       shortestPaths[l] = Math.min(shortestPaths[l], shortestPaths[visitIndex] + adjacentMatrix[visitIndex][l]);
     }
 
