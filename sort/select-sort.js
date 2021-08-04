@@ -1,7 +1,7 @@
 
 // note: 불안정, 제자리 정렬(새로운 메모리 필요x)
 
-function selectSort(array) {
+function selectionSort(array) {
   const length = array.length;
 
   for (let i = 0 ; i < length - 1 ; i++) {
@@ -18,4 +18,4 @@ function selectSort(array) {
 }
 
 
-selectSort([5, 1, 4, 7, 2, 6, 8, 3]);
+selectionSort([5, 1, 4, 7, 2, 6, 8, 3]);

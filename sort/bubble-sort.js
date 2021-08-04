@@ -1,5 +1,5 @@
 
-// note: 안정, 제자리 정렬(새로운 메모리 필요x
+// note: 안정, 제자리 정렬(새로운 메모리 필요x)
 
 const bubbleSort = function(array) {
   let length = array.length;
