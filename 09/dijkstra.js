@@ -19,7 +19,7 @@ function Dijkstra(startNode, adjacentMatrix) {
     isVisiteds[minIndex] = true; // note: 방문 처리
     let visitIndex = minIndex;
     for (let l = 0 ; l < shortestPaths.length ; l++) { // note: 최단 거리 갱신
-      if (isVisiteds[l]) continue; // note: 이미 방문했다면 갱신하지 않는다
+      if (isVisiteds[l]) continue; // note: 이미 방문했다면 갱신하지 않는다 (이 라인은 있어도 되고 없어도 된다)
 
       shortestPaths[l] = Math.min(shortestPaths[l], shortestPaths[visitIndex] + adjacentMatrix[visitIndex][l]);
     }

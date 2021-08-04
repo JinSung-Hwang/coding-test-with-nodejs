@@ -1,6 +1,6 @@
 
 
-function FloydWarshall(startNode, matrix) {
+function FloydWarshall(matrix) {
 
   for (let k = 0 ; k < matrix.length ; k++) {
     for (let a = 0 ; a < matrix.length ; a++) {
