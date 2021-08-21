@@ -106,5 +106,6 @@ dist
 # vscode settings
 .vscode
 
-# tip
+# my note
 tip.js
+review-note.js
