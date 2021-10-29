@@ -45,7 +45,7 @@ function recursion(k, startIndex) {
       lastCand = cands[cand];
       isSelecteds[cand] = true;
       selecteds[k] = cands[cand];
-      recursion(k + 1, cand);
+      recursion(k + 1, cand + 1);
       selecteds[k] = 0;
       isSelecteds[cand] = false;
     }

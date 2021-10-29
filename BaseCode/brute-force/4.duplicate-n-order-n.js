@@ -42,7 +42,7 @@ function recursion(k, startIndex) {
 
       isSelecteds[cand] = true;
       selecteds[k] = cands[cand];
-      recursion(k + 1, cand);
+      recursion(k + 1, cand + 1);
       selecteds[k] = 0;
       isSelecteds[cand] = false;
     }

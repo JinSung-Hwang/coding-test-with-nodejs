@@ -38,7 +38,7 @@ function recursion(k, startIndex) {
     for (let cand = startIndex; cand < n; cand++) {
 
       selecteds[k] = cands[cand];
-      recursion(k + 1, cand);
+      recursion(k + 1, cand + 1);
       selecteds[k] = 0;
     }
   }
