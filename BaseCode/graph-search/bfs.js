@@ -36,17 +36,16 @@ function solution() {
 function bfs(graph, isVisiteds, startIndex) {
   const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
   visitingIndexs.push(startIndex);
-  isVisiteds[startIndex] = true;
-
-  bfsPaths.push(startIndex) // note: 지나간 경로들을 수집하기
+  isVisiteds[startIndex] = true; // xxx1
 
   while (visitingIndexs.length) {
     const nextIndex = visitingIndexs.shift();
-    if (isVisiteds[nextIndex]) continue;
-
-    isVisiteds[nextIndex] = true;
-    visitingIndexs.push(...graph[nextIndex]);
-
-    bfsPaths.push(startIndex) // note: 지나간 경로들을 수집하기
+    // isVisiteds[nextIndex] = true; // xxx2: xxx1을 안넣고 여기 라인만 넣어 구현할 수도 있지만 성능이 느려진다.
+    bfsPaths.push(nextIndex) // note: 지나간 경로들을 수집하기
+    graph[nextIndex].forEach(index => {
+      if (isVisiteds[index]) return;
+      visitingIndexs.push(index);
+      isVisiteds[index] = true; // xxx1: xxx1으로 묶인 39, 49번 라인은 중요하다. 성능에 많은 영향이 끼친다. 
+    });
   }
 }

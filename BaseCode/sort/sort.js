@@ -3,7 +3,7 @@
 
 // note: 정렬 사용 조건
 // note:   1. 정렬 조건이 필요하다.
-// note:   2. 시간 복잡도는 O(NlogN) 이다.
+// note:   2. 시간 복잡도는 O(NlogN)이다.
 // note:     -> O(NlogN) 인데 정렬해도 괜찮은가?
 // note:   3. in-place / stable 여부를 알아야 한다.
 // note:     -> in-place(제자리): 정렬하는 과정중에 N개의 만큼 메모리를 추가적으로 사용해도 되는가? 

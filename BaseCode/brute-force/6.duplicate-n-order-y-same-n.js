@@ -15,7 +15,7 @@ let resultString = '';
 function input() {
   let inputs = fs.readFileSync(filePath).toString().trim().split('\n');
   [n, m] = inputs[0].split(' ').map(Number);
-  cands = inputs[1].split(' ').map(Number).sort((a, b) => a - b);
+  cands = inputs[1].split(' ').map(Number).sort((a, b) => a - b); // note: 중복된 원소를 선택하지 않기 위해서 lastCand를 추가했는데 이럴때는 사전에 정렬을 해야한다.
 }
 
 function output() {

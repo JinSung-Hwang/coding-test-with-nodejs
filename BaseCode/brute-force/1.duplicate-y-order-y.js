@@ -22,7 +22,7 @@ function output() {
 
 (function main() {
   input();
-  recursion(0, 0);
+  recursion(0);
   output();
 })();
 
