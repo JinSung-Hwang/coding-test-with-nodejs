@@ -33,11 +33,11 @@
 // todo: function dfs(x) { // <---------- 모든 정점이 x로 한번씩만 등장한다. O(V)
 // todo:   visit[x] = true; // x를 방문한다.
 // todo:   
-// todo:   for (y of graph[x]) { <------------ 인접행렬 O(V) / 인접 리스트 O(deg(x))
+// todo:   graph[x].forEach(index => { // <------------ 인접행렬 O(V) / 인접 리스트 O(deg(x))
 // todo:     if (visit[y]) return ; 
 // todo: 
 // todo:     dfs(y); // y에서 갈 수 있는 곳들도 확인 해보자
-// todo:   }
+// todo:   });
 // todo: }
 // note: 시간복잡도: 인접 행렬 = O( V^2 ) / 인접 리스트 = O( deg(1) + deg(2) ..... + deg(v)) = O(2E) = O(E)
 // note: 2. 너비 우선 탐색 (Breadth First Search)
@@ -49,12 +49,12 @@
 // todo:   while (que.isEmpty()) {
 // todo:     let x = que.shift();
 // todo:   
-// todo:     for (y of graph[x]) { <------------ 인접행렬 O(V) / 인접 리스트 O(deg(x))
+// todo:     graph[x].forEach(index => { // <------------ 인접행렬 O(V) / 인접 리스트 O(deg(x))
 // todo:       if (visit[y]) return ; 
 // todo:       
 // todo:       que.push(y);
 // todo:       visit[y] = true; // 미리 true 표시함
-// todo:     }
+// todo:     });
 // todo:   }
 // note: 시간복잡도: 인접 행렬 = O( V^2 ) / 인접 리스트 = O( deg(1) + deg(2) ..... + deg(v)) = O(2E) = O(E)
 
