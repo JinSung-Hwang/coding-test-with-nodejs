@@ -11,9 +11,9 @@ function input() {
   isVisiteds = Array(n + 1).fill(false);
   graph = Array(n + 1).fill(null).map(() => []);
   inputs.shift();
-  inputs.forEach(data => {
+  inputs.forEach(data => {  // note: 양 방향 그래프 생성
     let [x, y] = data.split(' ').map(Number);
-    graph[x].push(y); // note: 양 방향 그래프 생성
+    graph[x].push(y);
     graph[y].push(x);
   });
   graph.map(row => row.sort((a, b) => a - b)); // note: 그래프 각 정점 번호를 오름 차순으로 정렬
@@ -36,16 +36,15 @@ function solution() {
 function bfs(graph, isVisiteds, startIndex) {
   const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
   visitingIndexs.push(startIndex);
-  isVisiteds[startIndex] = true; // xxx1
+  isVisiteds[startIndex] = true; // note: index를 갈 수 있으니까 que에 추가하고 ** 미리 visit처리한것임 **
 
   while (visitingIndexs.length) {
     const nextIndex = visitingIndexs.shift();
-    // isVisiteds[nextIndex] = true; // xxx2: xxx1을 안넣고 여기 라인만 넣어 구현할 수도 있지만 성능이 느려진다.
     bfsPaths.push(nextIndex) // note: 지나간 경로들을 수집하기
     graph[nextIndex].forEach(index => {
       if (isVisiteds[index]) return;
       visitingIndexs.push(index);
-      isVisiteds[index] = true; // xxx1: xxx1으로 묶인 39, 49번 라인은 중요하다. 성능에 많은 영향이 끼친다. 
+      isVisiteds[index] = true;  // note: index를 갈 수 있으니까 que에 추가하고 ** 미리 visit처리한것임 **
     });
   }
 }
