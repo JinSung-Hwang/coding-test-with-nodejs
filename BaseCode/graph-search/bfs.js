@@ -33,6 +33,22 @@ function solution() {
   bfs(graph, isVisiteds, v);
 }
 
+// note: 방문 체크하지 않는 BFS
+// note: 사이클이 없고 단반향 graph이면 방문처리 안해도됌
+function bfs(graph, startIndex) { 
+  const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
+  visitingIndexs.push(startIndex);
+
+  while (visitingIndexs.length) {
+    const nextIndex = visitingIndexs.shift();
+    graph[nextIndex].forEach(index => {
+      visitingIndexs.push(index);
+    });
+  }
+}
+
+// note: 방문 체크하는 BFS
+// note: 사이클이 있거나, 양방향 그래프이면 방문 처리 해야함
 function bfs(graph, isVisiteds, startIndex) {
   const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
   visitingIndexs.push(startIndex);
@@ -40,7 +56,6 @@ function bfs(graph, isVisiteds, startIndex) {
 
   while (visitingIndexs.length) {
     const nextIndex = visitingIndexs.shift();
-    bfsPaths.push(nextIndex) // note: 지나간 경로들을 수집하기
     graph[nextIndex].forEach(index => {
       if (isVisiteds[index]) return;
       visitingIndexs.push(index);
