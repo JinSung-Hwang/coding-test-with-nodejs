@@ -11,7 +11,7 @@
 
 // note: JS 내부 Sort는 TimSort 방식을 사용한다.
 // note:   1. TimSort는 시간 복잡도: O(NlogN), 공간 복잡도: O(N)을 갖는다.
-//     :   2. 팀소트는 내부적으로 insertion, merge sort를 결합한 방식이다
+// note:   2. 팀소트는 내부적으로 insertion, merge sort를 결합한 방식이다
 
 // note: 정렬 특성
 // note:   1. 같은 정보들은 인접해 있을 것이다.
