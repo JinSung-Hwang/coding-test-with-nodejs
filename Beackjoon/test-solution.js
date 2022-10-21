@@ -10,19 +10,60 @@ let inputedData = ''
 let expectedData = '';
 
 inputedData = `
-7
-1 2 3
-2 4 .
-3 5 6
-5 . .
-6 . 7
-4 . .
-7 . .
+5
+1
+3
+8
+-2
+2
 `;
 expectedData = `
-ABDCEFG
-DBAECFG
-DBEGFCA
+2
+2
+1
+10
+`;
+_test(inputedData, expectedData, 'number');
+
+inputedData = `
+1
+4000
+`;
+expectedData = `
+4000
+4000
+4000
+0
+`;
+_test(inputedData, expectedData, 'number');
+
+inputedData = `
+5
+-1
+-2
+-3
+-1
+-2
+`;
+expectedData = `
+-2
+-2
+-1
+2
+`;
+_test(inputedData, expectedData, 'number');
+
+inputedData = `
+3
+0
+0
+-1
+`;
+expectedData = `
+0
+0
+0
+1
 `;
 _test(inputedData, expectedData, 'number');
 

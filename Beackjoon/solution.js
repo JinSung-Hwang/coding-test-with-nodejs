@@ -5,53 +5,51 @@ SOLUTION.main = main;
 
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './beakjun-inputs.txt';
-let n;
-let graph;
-let inputs;
-let isVisiteds;
-let preorderResult;
+let result;
+let N; // note: 정수들의 개수
+let numbers; // note: 정수들
 
 process.platform === 'linux' ? main() : ''; // note: 로컬 테스트 케이스와 백준 사이트에 호환을 맞춤기 위함
-
 
 function input() {
   // 글로벌 변수 초기화
   result = [];
-  sumLeafDepth = 0;
   // 데이터 입력 받기 
-  inputs = fs.readFileSync(filePath).toString().trim().split('\n');
-  n = +inputs.shift(); // note: 노드의 개수
-  graph = Array(n + 1).fill(null).map(() => []);
-  inputs.forEach(edge => {
-    let [a, b, c] = edge.split(' ');
-    if (b !== '.') graph[+a].push(+b);
-    if (c !== '.') graph[+a].push(+c);
-  });
-  isVisiteds = Array(n + 1).fill(false);
+  let inputs = fs.readFileSync(filePath).toString().trim().split('\n');
+  N = inputs.shift();
+  numbers = inputs.map(Number).sort((a, b) => a - b);
 }
 
 function output() {
-  console.log(result);
-  return result;
+  console.log(result.join('\n'));
+  return result.join('\n');
 }
 
 function main() {
   input();
   solution();
   return output();
-};
-
-function solution() {
-  // note: 리프 노드의 깊이의 합이 홀수이면 Yes, 짝수이면 No
-
-  preorder(graph, '1');
 }
 
-function preorder(graph, visitIndex) {
-  if (visitIndex === '.') return ;
-
-  preorderResult += visitIndex;
-  console.log('visitIndex', visitIndex);
-
-  return preorder(graph, graph[visitIndex][0]) + preorder(graph, graph[visitIndex][1]);
+function solution() {
+  // note: 산술 평균
+  result.push(+(numbers.reduce((a, b) => a + b, 0) / N).toFixed());
+  // note: 중앙 값  
+  result.push(numbers[Math.floor(N / 2)]);
+  // fixme: 최빈값: 최빈값중 두번쨰로 작은값을 출력한다.
+  let countObj = {};
+  numbers.forEach(n => {
+    if (countObj[n] === undefined) countObj[n] = 1;
+    else countObj[n]++;
+  });
+  let counts = [];
+  for (const key in countObj) {
+    counts.push({key, value: countObj[key]});
+  }
+  counts.sort((a, b) => b.value - a.value);
+  let bestMode = counts[0].value;
+  let bestModes = counts.filter(v => v.value === bestMode).sort((a, b) => a.key - b.key);
+  result.push(bestModes[1] === undefined ? bestModes[0].key : bestModes[1].key);
+  // note: 범위
+  result.push(numbers[N - 1] - numbers[0]);
 }
