@@ -4,7 +4,7 @@ SOLUTION.main = main;
 // note: --------------------------------------------------------------- 여기 아래로 복사해서 제출해야한다.
 
 const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './beakjun-inputs.txt';
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './input-data.txt';
 let result;
 let N; // note: 정수들의 개수
 let numbers; // note: 정수들

@@ -1,7 +1,7 @@
 const SOLUTION = require('./solution').main;
 const assert = require('assert');
 const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './beakjun-inputs.txt';
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './input-data.txt';
 const EncodingType = 'utf8';
 
 (function test() {
