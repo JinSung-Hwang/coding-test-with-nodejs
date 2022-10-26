@@ -35,31 +35,41 @@ function solution() {
 
 // note: 방문 체크하지 않는 BFS
 // note: 사이클이 없고 단반향 graph이면 방문처리 안해도됌
-function bfs(graph, startIndex) { 
-  const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
-  visitingIndexs.push(startIndex);
+function bfs(graph, startNode) { 
+  const visitingNodes = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
+  visitingNodes.push(startNode);
 
-  while (visitingIndexs.length) {
-    const nextIndex = visitingIndexs.shift();
-    graph[nextIndex].forEach(index => {
-      visitingIndexs.push(index);
+  while (visitingNodes.length) {
+    const nextNode = visitingNodes.shift();
+    graph[nextNode].forEach(node => {
+      visitingNodes.push(node);
     });
   }
 }
 
 // note: 방문 체크하는 BFS
 // note: 사이클이 있거나, 양방향 그래프이면 방문 처리 해야함
-function bfs(graph, isVisiteds, startIndex) {
-  const visitingIndexs = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
-  visitingIndexs.push(startIndex);
-  isVisiteds[startIndex] = true; // note: index를 갈 수 있으니까 que에 추가하고 ** 미리 visit처리한것임 **
+function bfs(graph, isVisiteds, startNode) {
+  const visitingNodes = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
+  visitingNodes.push(startNode);
+  isVisiteds[startNode] = true; // note: node를 갈 수 있으니까 que에 추가하고 ** 미리 visited처리한것임 **
 
-  while (visitingIndexs.length) {
-    const nextIndex = visitingIndexs.shift();
-    graph[nextIndex].forEach(index => {
-      if (isVisiteds[index]) return;
-      visitingIndexs.push(index);
-      isVisiteds[index] = true;  // note: index를 갈 수 있으니까 que에 추가하고 ** 미리 visit처리한것임 **
+  while (visitingNodes.length) {
+    const nextNode = visitingNodes.shift();
+    graph[nextNode].forEach(node => {
+      if (isVisiteds[node]) return;
+      visitingNodes.push(node);
+      isVisiteds[node] = true;  // note: node를 갈 수 있으니까 que에 추가하고 ** 미리 visited처리한것임 **
     });
+  }
+}
+
+function bfs(graph, startNode) { 
+  const visitingNodes = []; // todo: bfs는 큐를 생성하고 본다라고 생각하고 알고리즘을 외우면 좋을듯
+  visitingNodes.push(startNode);
+
+  while (visitingNodes.length) {
+    const nextNode = visitingNodes.shift();
+    visitingNodes.push(...graph[nextNode]);
   }
 }

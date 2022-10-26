@@ -16,7 +16,7 @@
 // note:   - 공간 복잡도                     : O(|V| ^ 2) 
 
 // note: 2. 인접 리스트
-// note:   - A와 B를 잇는 간선 존재 여부 확인: O(min(deg(a), deg(B)))  / 방향성 그래프이면 O( deg(a) )  [여기서 deg는 차수를 말한다.]
+// note:   - A와 B를 잇는 간선 존재 여부 확인: O(min(deg(A), deg(B)))  / 방향성 그래프이면 O( deg(A) )  [여기서 deg(A)는 A노드의 차수를 말한다.]
 // note:   - A와 연결된 모든 정점 확인       : O(deg(A))
 // note:   - 공간 복잡도                     : O(|E|) 
 
