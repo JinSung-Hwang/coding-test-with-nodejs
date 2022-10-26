@@ -4,7 +4,6 @@
 
 // note: O(V^3) 의 시간 복잡도가 걸린다.
 
-
 // note: graph 자료구조 초기화 방법
 // note: 1. 자기 자신으로 가는 비용은 0으로 초기화
 // note: 2. graph[a][b]위치에는 가는 비용이 모두 초기화 되어있어야한다. (아마 문제에서 줄듯)
@@ -16,5 +15,6 @@ function Floyd() {
 				graph[a][b] = Math.min(graph[a][b], graph[a][k] + graph[k][b]); //note: 가운데를 거쳐가는 것이 더 빠르면 그걸로 업데이트한다.
 }
 
-
 min(d[s][k] + d[k][a] + d[k][b]) 
+
+// todo: 난 이 알고리즘 외울때 이렇게 외웠다. "플로이드는 가시막 K, A, B"
