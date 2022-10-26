@@ -174,3 +174,8 @@ map.size // 2
 
 // fixme: 공부 팁
 // note: https://gall.dcinside.com/board/view/?id=programming&no=1358794
+
+// fixme: 시험 
+// note: 네카라쿠배에서 코테를 보면 나중에 면접가서는 내가 짠 코드를 설명해야한다. 
+// note: 하지만 면접 일정이 길어지면 문제와 내가 짠 코드들이 기억이 안나게된다. 
+// note: 그렇다고 시험 문제를 복사하면 부정행위가 되니까 핸드폰 카메라로 문제와 코드를 찍어두자.
