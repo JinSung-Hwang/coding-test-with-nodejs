@@ -76,6 +76,19 @@ function lowerBound2(array, L, R, X) { // note: 하한선을 구하는 함수 [a
   return result + 1; // note: X 미만의 수 중 제일 오른쪽 '인덱스'를 return하는 함수이기에 +1 을하면 개수가 된다
 }
 
+function lowerBound3(array, L, R, X) { // note: 하한선을 구하는 함수 [array에서 x 미만의 수 (x 보다 작은 수) 중 '제일 오른쪽 인덱스'를 return 하는 함수]
+  let result = L - 1; // note: array의 길이가 1인경우에는 L, R이 모두 0으로 들어온다. 그러면 return할때 result값이 +1되는데 result값을 0으로 맞춰주기 위해서 초기값을 -1함
+  while (L <= R) {
+    let mid = Math.floor((L + R) / 2);
+    if (array[mid] < X) {  // note:   L . . . M . X . R ??
+      result = mid; // note: X 보다 작을떄 result값을 저장한다.
+      L = mid + 1; // note: mid는 L + R의 중간값이니 L을 땡겨야한다.
+    } else {
+      R = mid - 1;
+    }
+  }
+  return result + 1; // note: result+1을하면 x와 같은 수중에서 제일 왼쪽 인덱스 값을 리턴하게 된다.
+}
 
 // note: L 이 1부터 시작하는 함수
 function upperBound(array, L, R, X) { // note: 상한선을 구하는 함수 [array에서 x 초과의 수 (x 보다 큰 수) 중 '제일 왼쪽 인덱스'를 return 하는 함수]
@@ -92,7 +105,6 @@ function upperBound(array, L, R, X) { // note: 상한선을 구하는 함수 [ar
   return result;
 }
 
-
 function upperBound2(array, L, R, X) { // note: 상한선을 구하는 함수 [array에서 x 초과의 수 (x 보다 큰 수) 중 '제일 왼쪽 인덱스'를 return 하는 함수]
   let result = R + 1;
   while (L <= R) {
@@ -105,4 +117,18 @@ function upperBound2(array, L, R, X) { // note: 상한선을 구하는 함수 [a
     }
   }
   return result + 1;
+}
+
+function upperBound3(array, L, R, X) { // note: 상한선을 구하는 함수 [array에서 x 초과의 수 (x 보다 큰 수) 중 '제일 왼쪽 인덱스'를 return 하는 함수]
+  let result = R + 1; // note: array의 길이가 1인경우에는 L, R이 모두 0으로 들어온다. 그러면 return할때 result값이 -1되는데 result값을 0으로 맞춰주기 위해서 초기값을 +1함
+  while (L <= R) {
+    let mid = Math.floor((L + R) / 2);
+    if (array[mid] <= X) {  // note:   L . . . M . X . R ??
+      L = mid + 1; 
+    } else {
+      result = mid; // note: X 보다 클때 result값을 저장한다.
+      R = mid - 1;
+    }
+  }
+  return result - 1; // note: result-1을하면 x와 같은 수중에서 제일 오른쪽 인덱스 값을 리턴하게 된다.
 }
